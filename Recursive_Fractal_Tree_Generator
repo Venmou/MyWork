@@ -1,0 +1,52 @@
+"```python
+import turtle
+
+# Create the turtle graphics window
+screen = turtle.Screen()
+screen.bgcolor(""light blue"")
+
+# Set up the turtle
+pen = turtle.Turtle()
+pen.setheading(90)
+pen.color(""dark green"")
+pen.speed(0)
+
+
+def draw_fractal_tree(size, angle, min_size, pen):
+    '''
+    Function to draw a fractal (recursive) tree.
+
+    :param size: The length of the trunk of the tree
+    :param angle: The angle between branches
+    :param min_size: Base case size
+    :param pen: Turtle object to draw with
+    '''
+    if size < min_size:
+        return
+    angle_offset = angle / 2
+    pen.pendown()
+    pen.forward(size)  # Draw trunk
+
+    # Draw left branch
+    pen.left(angle+offset)
+    draw_fractal_tree(size * 0.7, angle, min_size, pen)
+    pen.right(angle+offset)
+
+    # Draw right branch
+    pen.right(angle-offset)
+    draw_fractal_tree(size * 0.7, angle, min_size, pen)
+    pen.left(angle-offset)
+
+    pen.penup()
+    pen.backward(size)
+
+
+# Start drawing the tree
+pen.penup()
+pen.goto(0, -200)
+pen.pendown()
+draw_fractal_tree(100, 25, 15, pen)
+
+# Close the turtle graphics window
+screen.mainloop()
+```"
